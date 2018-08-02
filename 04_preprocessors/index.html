@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>HTML/CSS tools, practices and frameworks</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link href="../assets/css/reset.css" rel="stylesheet" type="text/css" />
+  <link href="../assets/css/fonts.css" rel="stylesheet" type="text/css" />
+  <link href="../assets/css/typography.css" rel="stylesheet" type="text/css" />
+  <link href="../assets/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header class="mainheader">
+      <div class="logo">
+        <div class="divider">
+          <a href="../index.html">
+            <img src="../assets/img/Logo.png">
+          </a>
+        </div>
+        <a href="../html-css-tools/html-css-tools.html#1">
+          <span class="logotext">Preprocessors</span>
+        </a>
+      </div>
+    </header>
+  </div>
+
+  <!-- ================== Slides ================== -->
+  <textarea id="source">
+
+
+class: center, middle
+
+.title[
+Front-end training
+# Preprocessors
+]
+
+
+
+---
+
+
+#Sass (scss) and Less proprocessors
+
+A CSS preprocessor is basically a scripting language that extends CSS and then compiles it into regular CSS
+.columns[.col-50[
+
+  ![LESS](assets/img/LESS_view.png)
+
+  .center[
+    [http://lesscss.org/](http://lesscss.org/)
+  ]
+
+].col-50[
+
+  ![SASS](assets/img/SASS_view.png)
+
+  .center[
+    [http://sass-lang.com/](http://sass-lang.com/)
+  ]
+
+]]
+
+
+---
+
+
+#Sass and Scss syntax
+The 'Sass' abbreviation stand for 'Syntactically Awesome Stylesheets.
+A more popular sass format has a different abbreviation and a file extension '.scss' which means 'Sassy CSS'. It was made to keep compatibility with CSS format.
+
+.columns.small[.col-50[
+  sass
+  ``` scss
+  #main
+  color: blue
+  font-size: 0.3em
+
+  a
+    font:
+      weight: bold
+      family: serif
+    &:hover
+      background-color: #eee
+
+  ```
+
+].col-50[
+  scss
+  ``` css
+  #main {
+    color: blue;
+    font-size: 0.3em;
+  
+    a {
+      font: {
+        weight: bold;
+        family: serif;
+      }
+      &:hover {
+        background-color: #eee;
+      }
+    }
+  }
+
+  ```
+
+]]
+
+
+
+---
+
+
+
+#Compilers GUI apps:
+- [CodeKit](http://incident57.com/codekit/) (Paid) _Mac_
+- [Ghostlab](http://www.vanamco.com/ghostlab/) (Paid) _Mac, Win_
+- [Prepros](https://prepros.io/) (Paid) _Mac, Win, Linux_
+- [Compass.app](http://compass.handlino.com/) (Paid, Open Source) _Mac, Win, Linux_
+- [Koala](http://koala-app.com/) (Open Source) _Mac, Win, Linux_
+- [Scout](http://mhs.github.io/scout-app/) (Open Source) _Mac, Win_
+
+
+---
+
+
+#Command line tool
+
+Windows users:
+install [ruby](http://rubyinstaller.org/) first.
+
+Install sass:
+```ruby
+gem install sass
+```
+Compile file:
+```ruby
+sass input.scss output.css
+```
+Watch for file changes and auto recompile:
+```ruby
+sass --watch input.scss:output.css
+```
+
+
+
+---
+
+
+
+#Output Style
+
+Sass allows you to choose between four different output styles by setting the :style option or using the --style command-line flag.
+
+
+.columns.small[.col-40[
+:nested
+  ``` css
+  #main {
+    color: #fff;
+    background-color: #000; }
+    #main p {
+      width: 10em; }
+  ```
+:expanded
+  ``` css
+  #main {
+    color: #fff;
+    background-color: #000;
+  }
+  #main p {
+    width: 10em;
+  }
+  ```
+].col-60[
+:compact
+  ``` css
+  #main { color: #fff; background-color: #000; }
+  #main p { width: 10em; }
+  ```
+:compressed
+  ``` css
+  #main{color:#fff;background-color:#000}#main p{width:10em}
+  ```
+]]
+
+
+---
+
+
+#Source maps
+
+Sourcemaps tell the browser how to find the Sass styles that caused each CSS style to be generated. This has three valid values: 
+- **:auto** uses relative URIs where possible, assuming that that the source stylesheets will be made available on whatever server you’re using, and that their relative location will be the same as it is on the local filesystem.
+- **:file** always uses “file:” URIs, which will work locally but can’t be deployed to a remote server. 
+- **:inline** includes the full source text in the sourcemap, which is maximally portable but can create very large sourcemap files. 
+- **:none** causes no sourcemaps to be generated at all.
+
+
+---
+
+
+#Online playground
+
+Some online playgrounds for Sass:
+
+- [http://www.sassmeister.com/](http://www.sassmeister.com/)
+- [http://codepen.io/](http://codepen.io/)
+- [https://jsfiddle.net/](https://jsfiddle.net/)
+
+
+
+---
+
+
+#Nesting
+
+.columns.small[.col-50[
+
+  ``` scss
+  .footer-nav {
+      ul {
+          margin: 0;
+          padding: 0;
+
+          li {
+              display: inline-block;
+
+              a {
+                  border-color: #000;
+                  color: #fc0;
+
+                  &:hover { color: #000; }
+              }
+          }
+      }
+
+      &.hidden { opacity:0; }
+
+      .homepage & { display: none; }
+  }
+
+  ```
+
+].col-50[
+
+  ``` css
+    .footer-nav ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    .footer-nav ul li {
+      display: inline-block;
+    }
+
+    .footer-nav ul li a {
+      border-color: #000;
+      color: #fc0;
+    }
+
+    .footer-nav ul li a:hover { color: #000; }
+
+    .footer-nav.hidden { opacity:0;}
+
+    .homepage .footer-nav { display: none; }
+
+  ```
+
+]]
+
+
+
+---
+
+
+#Variables
+
+.columns.small[.col-60[
+
+  ``` scss
+  $brandOrange: #ffcd01;
+  $navLinkColor: $brandOrange;
+  $themePrimaryColor: $brandOrange;
+  $fontStack: Arial, Helvetica, sans-serif;
+  $footerMargin: 0;
+
+  .footer-nav {
+      font: normal 14px/1.2 $fontStack;
+      margin: $footerMargin;
+      ul {
+          margin: 0;
+          padding: 0;
+          li {
+              display: inline-block;
+              a {
+                  border-color: $themePrimaryColor;
+                  color: $navLinkColor;
+                  &:hover {
+                     color: lighten($navLinkColor, 20%);
+                  }
+              }
+          }
+      }
+  }
+
+  ```
+
+].col-40[
+
+  ``` css
+  .footer {
+    font: normal 14px/1.2 Arial, Helvetica, sans-serif;
+    margin: 0;
+  }
+  .footer-nav ul {
+    margin: 0;
+    padding: 0;
+  }
+  .footer-nav ul li {
+    display: inline-block;
+  }
+  .footer-nav ul li a {
+    border-color: #ffcd01;
+    color: #ffcd01;
+  }
+  .footer-nav ul li a:hover {
+    color: #ffe167;
+  }
+
+  ```
+
+]]
+
+
+
+---
+
+
+#Imports
+All imported SCSS and Sass files will be merged together into a single CSS output file. In addition, any variables or mixins defined in imported files can be used in the main file.
+If you have a SCSS or Sass file that you want to import but don’t want to compile to a CSS file, you can add an underscore to the beginning of the filename. 
+.columns[.col-60[
+  _reset.scss:
+  ``` scss
+  html, body, p, h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+  }
+  ```
+  style.scss:
+  ``` scss
+
+  @import 'reset';
+
+  body {
+    font: 100% Helvetica, sans-serif;
+    background-color: #efefef;
+  }
+
+  ```
+
+].col-40[
+  style.css:
+  ``` css
+  html, body, p, h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font: 100% Helvetica, sans-serif;
+    background-color: #efefef;
+  }
+  ```
+]]
+
+
+---
+
+
+#Mixins
+
+.columns[.col-60[
+
+  ``` scss
+@mixin cont {
+  .cont{
+    color: #77C1EF;
+  }
+}
+
+@include cont;
+
+
+@mixin bordered($color, $width: 1px) {
+  color: $color;
+  border: $width solid black;
+  width: 450px;
+
+  &:hover { color: lighten($color, 20%)}
+}
+
+.button  {
+  display: inline-block;
+  @include bordered($color:#77C1EF, $width: 2px);
+}
+
+  ```
+
+].col-40[
+
+  ``` css
+.cont {
+  color: #77C1EF;
+}
+
+
+.button {
+  display: inline-block;
+  color: #77C1EF;
+  border: 2px solid black;
+  width: 450px;
+}
+.button:hover {
+  color: #d2ebfa;
+}
+  ```
+
+]]
+
+
+---
+
+
+
+#Extends
+
+.columns[.col-50[
+
+  ``` scss
+  .error {
+    border: 1px #f00;
+    background-color: #fdd;
+  }
+  .seriousError {
+    @extend .error;
+    border-width: 3px;
+  }
+
+  // Warning! Do not owerdose extends
+  .admin .tabbar a {
+    font-weight: bold;
+  }
+  .demo .overview .fakelink {
+    @extend a;
+  }
+
+  ```
+
+].col-50[
+
+  ``` css
+    .error, .seriousError {
+      border: 1px #f00;
+      background-color: #fdd;
+    }
+
+    .seriousError {
+      border-width: 3px;
+    }
+
+
+    .admin .tabbar a, 
+    .admin .tabbar .demo .overview .fakelink,
+    .demo .overview .admin .tabbar .fakelink {
+      font-weight: bold;
+    }
+
+  ```
+]]
+
+---
+
+
+
+#Mathematical operators
+
+.columns.small[.col-60[
+
+  ``` scss
+  p {
+    font: 10px/8px;             // Plain CSS, no division
+    $width: 1000px;
+    width: $width/2;            // Uses a variable, does division
+    width: round(1.5)/2;        // Uses a function, does division
+    height: (500px/2);          // Uses parentheses, does division
+    margin-left: 5px + 8px/2px; // Uses +, does division
+    color: #010203 + #040506;
+  }
+
+
+  $red: #f00;
+
+  a {
+    color: $red;
+    
+    &:hover {
+      color: darken($red, 10%);
+      border-bottom-color: lighten($red, 5%);
+    }
+  }
+
+  ```
+
+].col-40[
+
+  ``` css
+  p {
+    font: 10px/8px;
+    width: 500px;
+    height: 250px;
+    margin-left: 9px;
+    color: #050709;
+  }
+
+  a {
+    color: #f00;
+  }
+  a:hover {
+    color: #cc0000;
+    border-bottom-color: #ff1a1a;
+  }
+
+  ```
+]]
+
+
+
+---
+
+
+#Conditional operators
+
+.columns[.col-50[
+
+  ``` scss
+  $hasBorder: true;
+  $shadowColor: null;
+
+  p {
+    @if $hasBorder {
+
+      border: #ccc solid 1px;
+      border-width: 0 0 1px;
+
+    } @else if $shadowColor == blue {
+
+      box-shadow: 1px 1px 1px blue;
+
+    } @else {
+
+      box-shadow: 1px 1px 1px black;
+
+    }
+  }
+
+  ```
+
+].col-50[
+
+  ``` css
+  p {
+    border: #ccc solid 1px;
+    border-width: 0 0 1px;
+  }
+
+  ```
+]]
+
+
+
+---
+
+
+#Loops
+
+.columns[.col-50[
+
+  ``` scss
+  @for $i from 1 through 3 {
+    .item-#{$i} { width: 2em * $i; }
+  }
+
+  ```
+
+].col-50[
+
+  ``` css
+  .item-1 {
+    width: 2em; 
+  }
+  .item-2 {
+    width: 4em;
+  }
+  .item-3 {
+    width: 6em;
+  }
+
+  ```
+]]
+
+
+
+---
+
+
+
+#Comments
+
+.columns[.col-50[
+
+  ``` scss
+  /* This comment is
+   * several lines long.
+   * since it uses the CSS comment syntax,
+   * it will appear in the CSS output. */
+  body { color: black; }
+
+  // These comments are only one line long each.
+  // They won't appear in the CSS output,
+  // since they use the single-line comment syntax.
+  a { color: green; }
+
+  ```
+
+].col-50[
+
+  ``` css
+  /* This comment is
+   * several lines long.
+   * since it uses the CSS comment syntax,
+   * it will appear in the CSS output. */
+  body {
+    color: black; }
+
+  a {
+    color: green; }
+
+  ```
+]]
+
+
+
+---
+
+
+#Pros and cons of preprocessors
+
+Pros:
+
+- Modularization
+- Variables, mixins and other improvements over the regular css
+- A better syntax
+- Faster development
+
+Cons:
+
+- It’s also another layer of abstraction, a new language and syntax to learn
+- It doesn’t work without compiling, there’s no ability to live edit a site for quick changes
+- In the wrong hands, can make some very ugly CSS with css rules nested 5 elements deep or improper use of extending
+
+
+---
+
+
+#Jade, Haml
+
+
+Haml and Jade are based on one primary principle: markup should be beautiful. It accelerates and simplifies template creation.
+
+.columns[.col-50[
+
+  ![Haml](assets/img/haml_view.png)
+
+  .center[
+    [http://haml.info/](http://haml.info/ "http://haml.info/")
+  ]
+
+].col-50[
+
+  ![Jade](assets/img/jade_view.png)
+
+  .center[
+    [http://jade-lang.com/](http://jade-lang.com/)
+  ]
+
+]]
+
+
+---
+
+
+#Jade Example
+
+
+.columns[.col-50[
+
+  ``` jade
+    doctype html
+    html(lang="en")
+      head
+        title= pageTitle
+      body
+        h1 Jade - node template engine
+        #container.col
+          if youAreUsingJade
+            p You are amazing
+          else
+            p Get on it!
+          p.
+            Jade is a terse and simple
+            templating language.
+
+  ```
+
+].col-50[
+
+  ``` html
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <title>Jade</title>
+      </head>
+      <body>
+        <h1>Jade - node template engine</h1>
+        <div id="container" class="col">
+          <p>You are amazing</p>
+          <p>Jade is a terse and simple
+             templating language.</p>
+        </div>
+      </body>
+    </html>
+
+  ```
+
+]]
+
+
+
+
+---
+
+
+#Code Editor – Syntax Highlighting
+
+Don't forget to setup a plugin or extension in your code editor to highlight Sass or LESS syntax with the proper colors.
+
+![Syntax Highlighting](assets/img/sass-highliter.png)
+
+
+---
+
+
+# Task Runners
+
+Usually in a real project sass files are compiled not by some GUI app or a separate 'sass' command line tool but as a part of a larger tools called 'task runners'. 
+You will lern how to use them in an upcoming lectures.
+
+.columns[.col-30[
+  ![Grunt](assets/img/grunt-logo.png)
+
+  [http://gruntjs.com/](http://gruntjs.com/)
+].col-30[
+  ![Grunt](assets/img/gulp-logo.jpg)
+
+  [http://gulpjs.com/](http://gulpjs.com/)
+].col-30[
+  ![Grunt](assets/img/webpack-logo.png)
+
+  [http://webpack.github.io/](http://webpack.github.io/)
+]]
+
+
+---
+
+
+# Related resources
+- Sass official documentation [http://sass-lang.com/documentation](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#)
+- Sass tutorials [http://thesassway.com/](http://thesassway.com/)
+- Sass cheatsheet [https://devhints.io/sass](https://devhints.io/sass)
+    </textarea>
+  <!-- ================== End of Slides ================== -->
+
+  <script src="../assets/js/remark-latest.min.js" type="text/javascript"></script>
+  <script type="text/javascript">remark.create({ highlightStyle: 'github' });</script>
+</body>
+
+</html>
