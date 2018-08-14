@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Introduction to JS</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../assets/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/fonts.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/typography.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/shCore.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/shThemeDefault.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../assets/js/lib/shCore.js"></script>
+    <script type="text/javascript" src="../assets/js/lib/shBrushJScript.js"></script>
+    <script type="text/javascript" src="../assets/js/lib/shAutoloader.js"></script>
+    <script type="text/javascript">
+        SyntaxHighlighter.all();
+    </script>
+</head>
+
+<body>
+<div class="wrapper">
+    <header class="mainheader">
+        <div class="logo">
+            <div class="divider"><a href="../index.html"><img src="../assets/img/Logo.png"></a></div>
+            <a href="../intro-to-js/index.html#1"><span class="logotext">Introduction to JS</span></a>
+        </div>
+    </header>
+</div>
+<!-- ================== Slides ================== -->
+    <textarea id="source">
+
+
+class: center, middle
+
+.title[
+Front-end training
+# Introduction to JS
+]
+
+---
+
+# What is JavaScript?
+
+***JavaScript*** (JS) is a dynamic computer programming language. It is most commonly used as part of
+web browsers, whose implementations allow client-side scripts to interact with the user, control the
+browser, communicate asynchronously, and alter the document content that is displayed.
+
+Javascript also being used in server-side programming, game development and the creation of
+desktop and mobile applications.
+
+---
+
+# JavaScript possibilities
+
+- Visual effects (animation)
+- Simple calculations
+- User data validation
+- User data manipulation
+- Data storage (cookies/LocalStorage)
+- Dynamicaly change page structure (DHTML)
+- Get data from server (AJAX)
+
+---
+
+## The Most Popular Technologies (by Stack Overflow) in 2017
+
+![the most popular technologies on stack overflow chart](assets/the-most-popular-technologies-on-stack-overflow-2017.png)
+
+<a href="https://insights.stackoverflow.com/survey/2017#most-popular-technologies">more here</a>
+
+---
+
+## The Most Popular Languages on GitHub in 2017
+
+![the most popular technologies on stack overflow chart](assets/the-most-popular-languages-on-GitHub.png)
+
+<a href="https://insights.stackoverflow.com/survey/2017#most-popular-technologies">more here</a>
+
+---
+
+class: center, middle
+.title[
+Front-end training
+# A brief history of JavaScript
+]
+
+---
+
+JavaScript was created by Brendan Eich in 1995 during his time at Netscape Communications.
+It was inspired by Java, Scheme and Self.
+Eich wrote one in 10 days.
+
+
+![Brendan Eich](assets/brendan_eich.jpeg)
+
+---
+
+# JS first releases
+
+Although it was developed under the name ***Mocha***, the language was officially called LiveScript when it 
+first shipped in beta releases of Netscape Navigator 2.0 in September 1995, but it was renamed JavaScript when 
+it was deployed in the Netscape Navigator 2.0 beta 3 in December.
+
+---
+
+# What is ECMAScript?
+
+***ECMAScript (or ES)*** is a trademarked scripting-language specification standardized by Ecma International
+in ***ECMA-262*** and ISO/IEC 16262. It was created to standardize JavaScript, so as to foster multiple independent implementations.
+
+JavaScript has remained the best-known implementation of ECMAScript since the standard
+was first published, with other well-known implementations including JScript and ActionScript.
+
+Coders commonly use ECMAScript for client-side scripting on the World Wide Web, and it is increasingly
+being used for writing server applications and services using Node.js.
+
+https://en.wikipedia.org/wiki/ECMAScript
+
+---
+
+# Modern JavaScript engines
+
+A JavaScript engine is a virtual machine which interprets and executes JavaScript. Although there are several uses for a JavaScript engine, it is most commonly used in web browsers.<br/><br/>
+
+- ***Spidermonkey*** (the first JavaScript engine, powered Netscape Navigator)<br/>
+Firefox
+
+- ***JavaScriptCore*** (open source, marketed as Nitro)<br/>
+Safari
+
+- ***V8*** (open source, developed by Google)<br/>
+Chrome<br/>
+Node.js
+
+- ***Chakra*** (Microsoft)<br/>
+Internet Explorer 11
+
+- ***ChakraCore*** (Microsoft)<br/>
+Microsoft Edge
+
+---
+
+# Browsers
+
+![browser popularity chart](assets/browser_popularity.png)
+
+<a href="https://www.w3counter.com/globalstats.php?year=2017&month=12">more</a>
+
+---
+
+class: center, middle
+
+.title[
+Front-end training
+# Lets try JS
+]
+
+---
+
+# JS file and JS block
+
+- JavaScript block
+
+```html
+<script>
+    alert(“Hello world!”);
+</script>
+
+```
+- JavaScript file
+
+```html
+<script src=”script.js”></script>
+
+```
+
+---
+
+# JS file and JS block
+
+HTML markup example:
+
+```html
+<!Doctype html>
+<html>
+<head>
+    <title>JS</title>
+    <script src=”script2.js”></script>
+</head>
+<body>
+    <script>
+        alert(“Hello world!”)
+    </script>
+    <script src=”script2.js”></script>
+</body>
+</html>
+```
+
+---
+
+# JS file attributes
+
+File type
+
+``` html
+<script src=”script2.js” type="text/javascript"></script>
+```
+
+
+Defer
+
+```html
+<script src=”script2.js” defer></script>
+```
+
+
+Async
+
+```html
+<script src=”script2.js” async></script>
+```
+
+---
+
+# JS in tag attribute
+
+- You can add JS code to tag attribute if you really want it
+
+```html
+<button onclick="alert('1');">Show me a number</button>
+```
+
+---
+
+# JS output and debugging
+
+For JavaScript values output you can use “console.log” or “alert” function.
+
+```javascript
+console.log(123);
+console.log(123, 456);
+var x = 30;
+console.log("the value of x is", x);
+
+alert(123);
+alert("the value of x is");
+```
+
+You can execute JS directly into console, open dev tools (F12) and go in "Console" tab
+
+![Alt text](assets/console.log.jpg)
+
+---
+
+You can stop execution of JS in some particular place of code and take a look what is going on there.
+Open dev tools and go in 'Sources' tab.
+
+Take a look at [Chrome DevTools 101: Debugging JavaScript](https://youtu.be/H0XScE08hy8)
+
+index.html
+``` html
+
+<!Doctype html>
+<html>
+<head>
+    <script src=”script1.js”></script>
+</head>
+...
+</html>
+
+```
+script1.js
+```javascript
+var a = 15 + 45;
+var b = 32 + 11;
+var c = a + b; 
+```
+
+![Alt text](assets/debugging.jpg)
+
+---
+
+class: center, middle
+
+.title[
+Front-end training
+# JavaScript Explained
+]
+
+---
+
+# Keywords and reserved words
+
+Names that have a special meaning, such as var, while, and for may not be used as variable
+names. These are called keywords. There are also a number of words which are 'reserved for use' in
+future versions of JavaScript.
+
+```javascript
+break case catch continue debugger default delete
+do else false finally for function if implements
+in instanceof interface let new null package private
+protected public return static switch throw true
+try typeof var void while with yield this
+```
+
+---
+
+# Expressions and statements
+
+A fragment of code that produces a value is called an expression. If an expression corresponds to a
+sentence fragment, a statement, in JavaScript, corresponds to a full sentence in a human language. A
+program is simply a list of statements.
+
+```javascript
+// expression
+2-1
+true
+
+// statement
+var a = 5 + 8;
+!false;
+```
+
+---
+ 
+# Variables
+
+To catch and hold values, JavaScript provides a thing called a variable. A variable always has a name,
+and it can point at a value, holding on to it.
+
+```javascript
+var a;
+var b, c, myVariable;
+
+var _x = 10, $z = 20, myVariable = 30;
+
+var myVariable1 = 10,
+    myVariable2 = 20,
+    myVariable3 = 30;
+```
+
+ES2015
+
+```javascript
+let a;
+let b, c, myVariable;
+
+const A = 'some A constant';
+
+const B = 'some B constant',
+      MY_CONST = 'some MY_CONST constant';
+...
+```
+
+---
+
+class: center, middle
+
+.title[
+Front-end training
+# Types
+]
+
+---
+
+# Primitive data types
+
+- Boolean
+- Number
+- String
+- Underfined
+- Null
+- Symbol (added in ES2015)
+
+---
+
+# Boolean
+
+In computer science, a boolean is a logical data type that can have only the values true or false.
+
+```javascript
+// Variables with boolean data type
+var a = true;
+var b = false;
+
+// Boolean operators
+console.log(a && b);
+console.log(a || b);
+
+console.log(!a)
+console.log(!b);
+```
+
+---
+
+# Number
+
+Number is a numeric data type in the double-precision 64-bit floating point format (IEEE 754).
+In other programming languages different numeric types can exist, for examples: Integers, Floats, Doubles, or Bignums.
+
+```javascript
+console.log(0)          // logs 0
+console.log(-2)         // logs 0
+console.log(3.5)        // logs 3.5
+console.log(.75)        // logs 0.75
+console.log(30000)      // logs 30000
+console.log(0xaaacc)    // logs 699084  (Hexadecimal)
+console.log(0472)       // logs 314     (Base-8)
+console.log(03248)      // logs 3248
+console.log(1.2e3)      // logs 1200
+```
+
+.bottom[more info [here](https://epa.ms/js-number)]
+
+---
+
+# String
+
+Strings are used to represent text. They are written by enclosing their content in quotes:
+
+```javascript
+var a = “First string”;
+var b = ‘Second string’;
+var c = a + ' and ' + b; //First string and Second string
+
+var stringLength = “Hello”.length;
+
+var complexString = “Some \”complex \” string”
+```
+
+Template Strings (ES2015)
+
+it uses back-ticks (\`\`) rather than the single or double quotes: 
+
+```javascript
+let a = `First string`;
+let b = `Second string`;
+
+let c = `${a} and ${b}`; //First string and Second string
+
+let d = `2 + 2 is equal ${2 + 2}`; //"2 + 2 is equal 4"
+```
+
+---
+
+## *undefined*
+
+Automatically assigned to variables that have just been declared or to formal arguments for which there are no actual arguments.
+
+```javascript
+var a;
+console.log(a); // undefined
+```
+
+## *null*
+
+The value null represents the intentional absence of any object value
+
+```javascript
+var a = null;
+console.log(a); // null
+```
+
+***Note***
+
+```javascript
+null = 'value' // ReferenceError
+undefined = 'value' // 'value'
+```
+
+
+---
+
+## *typeof* operator
+
+```javascript
+typeof(5)                   // return 'number'
+
+typeof('Hello')             // return 'string'
+
+typeof(true)                // return 'boolean'
+
+typeof(undefined)           // return 'undefined'
+
+typeof({ foo: 'bar' })      // return 'object'
+typeof([1, 2, 3])
+typeof(/\w+/)
+
+typeof(null)
+// ^^^ this is bug more info here: https://epa.ms/typeof-bug
+
+typeof(function(){})        // return 'function'
+```
+
+---
+
+# Operators
+
+- Unary (!, +, ...)
+- Binary (=, +, >, <, ...)
+- Ternary:
+
+```javascript
+// Unary
+++1
+
+// Binary
+1 + 2
+
+// Ternary
+var a = (someVar1 > someVar2) ? 4 : 2;
+```
+
+---
+
+# Number operators
+
+```javascript
+console.log(100 + 4 * 11 / 2 - 1); //121
+
+var i = 20;
+console.log(++i);           // 21
+console.log(i);             // 21
+console.log(i--);           // 21
+console.log(i);             // 20
+
+var x = 25;
+x += 20; //(x = x + 20);
+console.log(x);             //45
+
+console.log(5 / 0);         // Infinity
+console.log(0 / 0);         // NaN
+
+typeof(Infinity)    // 'number'
+typeof(NaN)         // 'number'
+```
+
+---
+
+# Comparisons
+
+Way to produce boolean values.
+
+```javascript
+console.log(10 > 20);       // false
+console.log(10 < 20);       // true
+
+console.log(10 >= 20);
+console.log(10 <= 20);
+
+console.log(10 === 20);
+console.log(10 !== 20);
+
+console.log(10 == “10”)     // true
+console.log(10 === “10”);   // false
+
+console.log(null == undefined)  // true
+console.log(null === undefined) // false
+```
+
+---
+
+# Type coercion
+
+***String conversion:***
+
+```javascript
+var a = true + "test"; // "truetest"
+var b = "test" + undefined; // "testundefined"
+var c = 123 + ""; // "123"
+var d = String(55); // "55"
+var e = 123;
+e = e.toString(); // "123"
+```
+
+---
+
+# Type coercion
+
+***Numerical conversion:***
+
+```javascrip
+var a = +"123"; // 123
+var b = Number("123"); // 123
+var c = parseInt("123px", 10); // 123
+var d = "5" * "4"; // 20
+```
+
+.demo1[
+<table class="table-demo">   
+    <thead>
+        <tr>
+            <th><em>value</em></th>
+            <th><em>convert to</em></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>undefined</td>
+            <td>NaN</td>
+        </tr>
+        <tr>
+            <td>null</td>
+            <td>0</td>
+        </tr>
+         <tr>
+            <td>true/false</td>
+            <td>1/0</td>
+        </tr>
+         <tr>
+            <td>String</td>
+            <td>convert to string by special rules</td>
+        </tr>
+    </tbody>
+</table>
+]
+
+<style>
+.demo1 {
+    position: relative;
+    box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.2) inset;
+    }
+    .demo1:before { 
+        margin-bottom: 1px;
+        background: #12679b;;
+        position: absolute;
+        bottom: 100%;
+        left: 0px;
+        right: 0px;
+        padding: 3px 5px 2px;
+        font-size: 12px;
+        color: #fff;
+    }
+
+    .table-demo {
+        text-align: left;
+        width: 100%;
+        border: #ccc solid 1px;
+        border-collapse: collapse;
+    }
+    .table-demo th,
+    .table-demo td {
+        padding: 5px;
+        border: 1px solid #ccc;
+    }
+    .demo1.table-demo th {
+        font-weight: bold;
+    }
+
+</style>
+
+---
+
+# Type coercion
+
+***Logical conversion:***<br/>
+The transformation to the “true / false” is a boolean context, such as if (obj), while (obj) and the
+application of logical operators.
+
+```javascript
+var a = Boolean(1); // true
+var b = Boolean(0); // false
+var c = !!5; // true
+```
+
+.demo1[
+<table class="table-demo">
+    <thead>
+        <tr>
+            <th><em>value</em></th>
+            <th><em>convert to</em></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>undefined, null</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td>Number</td>
+            <td>all true, 0 - false, NaN - false</td>
+        </tr>
+         <tr>
+            <td>String</td>
+            <td>all true, empty string "" — false</td>
+        </tr>
+         <tr>
+            <td>Object</td>
+            <td>always true</td>
+        </tr>
+    </tbody>
+</table>
+]
+
+---
+
+class: center, middle
+
+
+##Thanks
+##The end
+
+
+
+    </textarea>
+<!-- ================== End of Slides ================== -->
+
+    <script src="../assets/js/remark-latest.min.js" type="text/javascript"></script>
+    <script type="text/javascript">remark.create({highlightStyle: 'github'});</script>
+</body>
+</html>
