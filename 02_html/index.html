@@ -29,6 +29,16 @@ Front-end training
 
 ---
 
+# Agenda
+
+- HTML doc structure
+- Page elements
+- Basic and semantic tags
+- Tags attributes
+- Form
+
+---
+
 # HyperText Markup Language
 
 - Markup language not equal programming language
@@ -653,136 +663,6 @@ poster="poster.jpg" width="240" height="240">
 ]]
 ---
 
-#SVG and Canvas
-
-- Provide native drawing functionality
-- Completely integrated into HTML5 documents (part of DOM)
-- Can be styled with CSS
-- Can be controlled with JavaScript
-- Use for animation, charts, images, pixel manipulation, and so on
-- Canvas supports 2D and 3D (WebGL)
-
----
-
-
-#SVG
-
-SVG stands for **S**calable **V**ector **G**raphics and it is a language for describing 2D-graphics and graphical applications in XML and the XML is then rendered by an SVG viewer.
-.small[
-``` html
-<h4>HTML5 SVG Circle</h4>
-<svg id="svgelem" height="150" xmlns="http://www.w3.org/2000/svg">
-    <circle id="redcircle" cx="50" cy="50" r="50" fill="red" />
-</svg>
-
-<h4>HTML5 SVG Rectangle</h4>
-<svg id="svgelem" height="150" xmlns="http://www.w3.org/2000/svg">
-    <rect id="redrect" width="300" height="100" fill="red" />
-</svg>
-```
-]
-<br>
-.columns[.col-50.demo[
-<h4>HTML5 SVG Circle</h4>
-<svg id="svgelem" height="100" xmlns="http://www.w3.org/2000/svg">
-    <circle id="redcircle" cx="50" cy="50" r="50" fill="red" />
-</svg>
-].col-50.demo[
-<h4>HTML5 SVG Rectangle</h4>
-<svg id="svgelem" height="100" xmlns="http://www.w3.org/2000/svg">
-    <rect id="redrect" width="50" height="80" fill="red" />
-</svg>
-]]
-
----
-
-
-#SVG example
-.small[
-index.html:
-```html
-<object data="assets/img/svg-example.svg" type="image/svg+xml" />
-<img src="assets/img/svg-example.svg" />
-```
-svg-example.svg:
-```xml
-<svg version="1.1"
-     baseProfile="full"
-     width="300" height="120"
-     xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="red" />
-  <circle cx="150" cy="60" r="50" fill="green" />
-  <text x="150" y="70" font-size="30" text-anchor="middle" fill="white">SVG</text>
-</svg>
-```
-]
-<br>
-.columns[.col-50.demo[
-<img src="assets/img/svg-example.svg" />
-].col-50.demo[
-<object data="assets/img/svg-example.svg" type="image/svg+xml" />
-]]
----
-
-#SVG icons
-Icons are a great place to start using SVG on the web. SVGs are flexible, resolution independent, and light weight, so icons naturally lend themselves to the vector format.
-
-With SVG, the freedom exists to style individual elements within an icon, which opens up entirely new possibilities.
-
-<br>
-.col-80.center[
-  ![SVG icons](assets/img/font-awesome-icons.png)
-
-  [SVG icons](http://fortawesome.github.io/Font-Awesome/icons/)
-]
-
-
----
-
-#Canvas
-.small[
-`<canvas>` is an HTML element which can be used to draw graphics using scripting (usually JavaScript). This can, for instance, be used to draw graphs, make photo composition or simple (and not so simple) animations. [Demo](assets/example-canvas.html)
-
-
-```html
-<html>
- <head>
-  <script>
-    function draw() {
-      var canvas = document.getElementById("rectangles");   // Get canvas element
-      if (canvas.getContext) {
-        var ctx = canvas.getContext("2d");                  // Draw here
-        ctx.fillStyle = "rgb(200,0,0)";                     // Red fill color
-        ctx.fillRect (10, 10, 55, 50);                      // Create a red rectangle
-        ctx.fillStyle = "rgba(0, 0, 200, 0.5)";             // Blue fill color
-        ctx.fillRect (30, 30, 55, 50);                      // Create a second rectangle
-      }
-    }
-  </script>
- </head>
- <body onload="draw();">
-    <canvas id="rectangles" width="150" height="150">
-      <img src="../assets/img/logo.png" width="150" height="150" alt="Epam logo" />
-    </canvas>
- </body>
-</html>
-
-```
-]
-
----
-
-
-#Canvas example. Game
-.center[
-  ![Canvas game demo](assets/img/canvas-game.png)
-
-  [Canvas game demo](http://dougx.net/plunder/plunder.html)
-]
-
-
----
-
 #HTML5 Shiv
 
 HTML5Shiv is a JavaScript workaround, invented by Sjoerd Visscher, to enable styling of HTML5 elements in versions of Internet Explorer prior to version 9, which do not allow unknown elements to be styled without JavaScript. HTML5Shiv is calling `document.createElement("tagname")` for each of the new HTML5 elements, which causes IE to parse them correctly. It also includes basic default styling for those HTML5 elements.
@@ -803,24 +683,12 @@ HTML5Shiv is a JavaScript workaround, invented by Sjoerd Visscher, to enable sty
 </html>
 ```
 
-
----
-
-# Additional links
-<br><br>
-
-- [SVG Tutorial](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial)
-- [Canvas Tutorial](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial)
-- [Manipulating SVG Icons With Simple CSS](http://webdesign.tutsplus.com/articles/manipulating-svg-icons-with-simple-css--webdesign-15694)
-- [Справочник по HTML5](https://webref.ru/)
-- [w3schools. HTML5 Introduction](http://www.w3schools.com/html/html5_intro.asp)
-
-
 ---
 
 # Forms Introduction
 
-
+The HTML `<form>` element represents a document section that contains interactive controls for submitting information to a web server.
+.columns.small[.col-60[
 - HTML forms are used to create (rather primitive) GUIs on Web pages
 - Usually the purpose is to ask the user for information
 - The information is then sent back to the server
@@ -829,6 +697,15 @@ HTML5Shiv is a JavaScript workaround, invented by Sjoerd Visscher, to enable sty
 - Form elements include: buttons, checkboxes, text fields, radio buttons, drop-down menus, etc
 - Other kinds of HTML tags can be mixed in with the form elements
 - A form usually contains a Submit button to send the information in the form elements to the server
+]
+.col-40.demo[
+<form>
+Email: <input type=email> <br><br>
+Name: <input type=text> <br><br>
+Message: &lt;textarea cols="10" rows="5">&lt;/textarea> <br><br>
+<input type="Submit" value="Send" />
+</form>
+]]
 
 ---
 
@@ -852,6 +729,37 @@ The arguments to form tell what to do with the user input:
 
 ---
 
+# Form elements
+
+An HTML `<form>` contains form elements.
+Form elements are textarea, select, button and different types of input elements, like text fields, checkboxes, radio buttons, submit buttons, and more.
+
+
+The most important form element is the `<input>` element. This element can be displayed in several ways, depending on the type attribute:
+.columns.small[.col-50[
+- text;
+- password;
+- submit;
+- radio;
+- checkbox;
+- button;
+- color;
+- date;
+- datetime-local;
+- email;
+]
+.col-50.small[
+- month;
+- number;
+- range;
+- search;
+- tel;
+- time;
+- url;
+- week;
+]]
+
+---
 
 # The `<fieldset>, <legend>` tag
 
@@ -899,22 +807,6 @@ The fieldset is a useful tool for organizing and grouping related items within a
 
 ---
 
-
-
-# The `<input>` tag
-The input element represents a typed data field, usually with a form control to allow the user to edit the data.
-
-Most, but not all, form elements use the input tag, with a `type="..."` argument to tell which kind of element it is.
-The most used types `text`, `checkbox`, `radio`, `password`, `hidden`, `submit`, `reset`, `button`, `file`, or `image`.
-
-Input tag arguments:
-- `name`: the name of the element
-- `value`: the “value” of the element; used in different ways for different values of type
-- `readonly`: the value cannot be changed
-- `disabled`: the user can’t do anything with this element
-
----
-
 # The `<textarea>` tag
 The textarea element represents a multiline plain text edit control for the element's raw value. The contents of the control represent the control's default value.
 
@@ -933,6 +825,20 @@ The textarea element represents a multiline plain text edit control for the elem
 </div>
 ]]
 
+
+---
+
+# The `<input>` tag
+The input element represents a typed data field, usually with a form control to allow the user to edit the data.
+
+Most, but not all, form elements use the input tag, with a `type="..."` argument to tell which kind of element it is.
+The most used types `text`, `checkbox`, `radio`, `password`, `hidden`, `submit`, `reset`, `button`, `file`, or `image`.
+
+Input tag arguments:
+- `name`: the name of the element
+- `value`: the “value” of the element; used in different ways for different values of type
+- `readonly`: the value cannot be changed
+- `disabled`: the user can’t do anything with this element
 
 ---
 
@@ -1253,6 +1159,18 @@ Pattern attribute match input to custom regular expression:
 <input type="submit" value="submit">
 </form>
 ]]
+
+---
+
+# Additional links
+<br><br>
+
+- [w3schools. HTML5 Introduction](http://www.w3schools.com/html/html5_intro.asp)
+- [Справочник по HTML5](https://webref.ru/html)
+- [SVG Tutorial](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial)
+- [Canvas Tutorial](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial)
+- [Manipulating SVG Icons With Simple CSS](http://webdesign.tutsplus.com/articles/manipulating-svg-icons-with-simple-css--webdesign-15694)
+
 
 ---
 
