@@ -29,7 +29,6 @@
 <!-- ================== Slides ================== -->
     <textarea id="source">
 
-
 class: center, middle
 
 .title[
@@ -37,15 +36,11 @@ Front-end training
 # DOM
 ]
 
-
-
 ---
 
+class: center, middle
 
-
-# DOM, BOM and JS
-
-![Alt text](../assets/img/DOM1.png)
+![dom structure](./assets/dom_1.png)
 
 ---
 
@@ -85,16 +80,57 @@ elements.
 
 ---
 
-
+class: center, middle
 
 # DOM
 
-![Alt text](../assets/img/DOM2.png)
+![dom parsing](./assets/dom_parsing.gif)
 
 
 ---
 
+# Nodes types
 
+--
+
+- Document - **9**
+--
+
+- DocumentType - **10**
+--
+
+- Element - **1**
+--
+
+- Text - **3**
+--
+
+- Comment - **8**
+--
+
+- DocumentFragment - **11**
+
+---
+
+class: center, middle
+
+# From this 👇
+
+![html example](./assets/html_example.jpg)
+
+---
+
+### To this 👇
+
+![dom tree](./assets/dom_tree.png)
+
+---
+
+If you 🤔 wondering what's a tree is, take a look at 😉:
+- https://en.wikipedia.org/wiki/Tree_(data_structure)
+- https://youtu.be/oSWTXtMglKE
+
+---
 
 # DOM
 
@@ -118,30 +154,43 @@ With the DOM, JavaScript gets all the power it needs to create dynamic HTML:
 
 Reaching Elements in a Document
 
-<pre class="brush: jscript">
-//Retrieves the element with the given id as an object
+```javascript
+// Retrieves the element with the given id as an object
 document.getElementById('id');
-//Retrieves all elements with the tag name tagname and stores them in an
-//array like
+// Retrieves all elements with the tag name tagname and stores them in an
+// array like
 document.getElementsByTagName('tagname');
-</pre>
 
+// returns the first element that is a descendant of the element that matches specified selector
+document.querySelector
+
+// return list of elements that matches specified selector
+document.querySelectorAll
+```
+
+---
+
+# DOM
 
 Reading Element Attributes, Node Values and Other Data
 
-<pre class="brush: jscript">  
-//Retrieves the value of the attribute with the name attribute
+```javascript
+// Retrieves the value of the attribute with the name attribute
 node.getAttribute('attribute');
-//Sets the value of the attribute with the name attribute to value
+
+// Sets the value of the attribute with the name attribute to value
 node.setAttribute('attribute', 'value');
-//Reads the type of the node (1 = element, 3 = text node)
+
+// Reads the type of the node (1 = element, 3 = text node)
 node.nodeType;
-//Reads the name of the node (either element name or #textNode)
+
+// Reads the name of the node (either element name or #textNode)
 node.nodeName;
-//Reads or sets the value of the node (the text content in the case of
-//text nodes)
+
+// Reads or sets the value of the node (the text content in the case of
+// text nodes)
 node.nodeValue;
-</pre>
+```
 
 
 ---
@@ -151,54 +200,72 @@ node.nodeValue;
 # DOM
 Navigating Between Nodes
 
-<pre class="brush: jscript">
-//Retrieves the previous sibling node and stores it as an object.
+```javascript
+// Retrieves the previous sibling node and stores it as an object.
 node.previousSibling;
-//Retrieves the next sibling node and stores it as an object.
+
+// Retrieves the next sibling node and stores it as an object.
 node.nextSibling;
-//Retrieves all child nodes of the object and stores them in an list.
-//here are shortcuts for the first and last child node, named node.
-//firstChild and node.lastChild.
+
+// Retrieves all child nodes of the object and stores them in an list.
+// here are shortcuts for the first and last child node, named node.
+// firstChild and node.lastChild.
 node.childNodes;
-//Retrieves the node containing node.
+
+// Retrieves the node containing node.
 node.parentNode;
-</pre>
+```
 
-
+--
+<br />
+👉 optional task:
+> try to implement your own `getElementsByTagName` or `getElementById` function, using only functions mentioned on this slide 🤘
 
 ---
 
 
-
-# DOM
 
 Creating New Nodes
 
-<pre class="brush: jscript">
-//Creates a new element node with the name element. You provide the name
-//as a string.
+```javascript
+// Creates a new element node with the name element. You provide the name
+// as a string.
 document.createElement(element);
-//Creates a new text node with the node value of string.
+
+// Creates a new text node with the node value of string.
 document.createTextNode(string);
-//Creates newNode as a copy (clone) of node. If bool is true, the clone
-//includes clones of all the child nodes of the original.
+
+// Creates newNode as a copy (clone) of node. If bool is true, the clone
+// includes clones of all the child nodes of the original.
 newNode = node.cloneNode(bool);
-//Adds newNode as a new (last) child node to node.
+
+// Adds newNode as a new (last) child node to node.
 node.appendChild(newNode);
-//Inserts newNode as a new child node of node before oldNode.
-node.insertBefore(newNode,oldNode);
-//Removes the child oldNode from node.
+
+// Inserts newNode as a new child node of node before oldNode.
+node.insertBefore(newNode, oldNode);
+
+// Removes the child oldNode from node.
 node.removeChild(oldNode);
-//Replaces the child node oldNode of node with newNode.
+
+// Replaces the child node oldNode of node with newNode.
 node.replaceChild(newNode, oldNode);
-//Reads or writes the HTML content of the given element as a string—
-//including all child nodes with their attributes and
-//text content.
+
+// Reads or writes the HTML content of the given element as a string including
+// all child nodes with their attributes and text content.
 element.innerHTML;
-</pre>
+```
 
 ---
 
+class: center, middle
+
+.title[
+Front-end training
+# Events
+]
+
+---
 
 # Mouse Events
 
@@ -215,9 +282,6 @@ element.innerHTML;
 ***onmouseout*** <br/>The event occurs when a user moves the mouse pointer out of an element
 
 ***onmouseup*** <br/>The event occurs when a user releases a mouse button over an element
-
-
-
 
 
 ---
@@ -245,57 +309,60 @@ Inline
 
 ``` html
 <div onclick='getACupcake(event)'>
-
 ```
+
 addEventListener()
 
-<pre class="brush: jscript">
+```javascript
 document.getElementById('cupcakeButton').addEventListener('click', getACupcake);
-document.getElementById('cupcakeButton').attachEvent('onclick', getACupcake);
-//Note: Internet Explorer 9 adds support for addEventListener().
-</pre>
+```
 Assigning to event handler properties
 
-<pre class="brush: jscript">
+```javascript
 document.getElementById('cupcakeButton').onclick = getACupcake;
-</pre>
-
 ```
-
 
 ---
 
 
 # Event object
 
-event.target is the original element the event happened to. However, Internet Explorer calls it event.
-srcElement. In fact, Chrome and Safari started setting both. You can do this for maximum
-compatibility:
+`event.target` is the original element the event happened to.
 
-<pre class="brush: jscript">
+```javascript
 function getACupcake(event) {
-    var target = event.target || event.srcElement;
-    target.style.backgroundColor = '#F00'; // use it
+    event.target.style.backgroundColor = '#F00'; // use it
 }
-</pre>
+```
 
 
 ---
 
-    # Capturing vs Bubbling
+    ## Capturing vs Bubbling
     
  - Capturing phase – the event goes down to the element.
  - Target phase – the event reached the target element.
  - Bubbling phase – the event bubbles up from the element.
+ 
 <pre class="bubbling-img">
-    <img src="../assets/img/capture-bubbling.png" alt="">
+    <img src="./assets/capture-bubbling.png" alt="event capture and bubbling">
 </pre>
 
 
 ---
 
+# Links
 
+An Introduction to the Document Object Model (DOM) 🚀
+- https://javascriptforwp.com/the-dom/
+- https://javascriptforwp.com/creating-and-adding-text-and-element-nodes-to-the-dom/
+- https://javascriptforwp.com/intro-to-events/
+- https://javascriptforwp.com/dom-event-propagation-javascript-capturing-bubbling-explained/
 
+JavaScript Event Capture, Propagation and Bubbling 🔥
+- https://youtu.be/F1anRyL37lE
+
+---
 
 class: center, middle
 
@@ -309,8 +376,9 @@ class: center, middle
 <!-- ================== End of Slides ================== -->
 
     <script src="../assets/js/remark-latest.min.js" type="text/javascript"></script>
-    <script type="text/javascript">remark.create({highlightStyle: 'github'});</script>
+    <script type="text/javascript">remark.create({
+        highlightStyle: 'github',
+        highlightLanguage: 'javascript'
+      });</script>
 </body>
 </html>
-Contact GitHub API Training Shop Blog About
-© 2016 GitHub, Inc. Terms Privacy Security Status Help
