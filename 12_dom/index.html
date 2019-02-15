@@ -157,15 +157,16 @@ Reaching Elements in a Document
 ```javascript
 // Retrieves the element with the given id as an object
 document.getElementById('id');
+
 // Retrieves all elements with the tag name tagname and stores them in an
 // array like
 document.getElementsByTagName('tagname');
 
 // returns the first element that is a descendant of the element that matches specified selector
-document.querySelector
+document.querySelector('div.user-panel.main input[name=login]')
 
 // return list of elements that matches specified selector
-document.querySelectorAll
+document.querySelectorAll('div.user-panel.main input[name=login]')
 ```
 
 ---
@@ -298,6 +299,35 @@ Front-end training
 ***onkeyup***
 <br/>The event occurs when the user releases a key
 
+***oninput***
+<br/>The DOM input event fires synchronously when the value of an `<input>`, `<select>`, or `<textarea>` element has been altered.
+
+***onfocus***
+<br/>The focus event fires when an element has received focus.
+
+***onblur***
+<br/>The blur event fires when an element has lost focus.
+                
+
+
+---
+
+# Other
+--
+
+- Form elements like on submit, focus or change
+--
+
+- Media events like onplay, on pause, on onseeked
+--
+
+- Drag events like ondrag, ondragenter, ondrop
+--
+
+- General object events like onload, onresize, onscroll
+--
+
+- Other – clipboard, print, touch, transition, speech recognition
 
 
 ---

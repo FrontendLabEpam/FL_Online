@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+    <title>The DOM 🤘</title>
+    <style>
+        div {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 100px;
+        }
+        
+        .green {
+            background: green;
+        }
+        
+        .purple {
+            background: purple;
+        }
+
+        .red {
+            background: red;
+        }
+        </style>
+</head>
+<body>
+    <div class="green">
+        <div class="purple">
+            <div class="red"></div>
+        </div>
+    </div>
+
+    <script>
+        function click(e) {
+            console.log(this.classList.value)
+        }
+
+        document.querySelectorAll('div').forEach(el => {
+            el.addEventListener('click', click, {
+                once: true,
+            })
+        })
+    </script>
+</body>
